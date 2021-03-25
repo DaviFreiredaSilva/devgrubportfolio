@@ -1,24 +1,71 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import {Container, Navbar, Nav} from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.css'
+
+import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
 
 function App() {
+
+  // Estados da página principal--------------------------
+  const [title, setTitle] = useState("Davi Freire")
+  const [HeaderLinks, setHeaderLinks] = useState([
+    {title: 'Home', path: '/'},
+    {title: 'Sobre', path: '/about'},
+    {title: 'Contato', path: '/contact'},
+  ])
+  const [home, setHome] = useState(
+    {
+      title: 'Seja persistente',
+      subTitle: 'Projetos que fazem a diferença',
+      text: 'Veja meus projetos abaixo'
+    }
+  )
+  const [about, setAbout] = useState(
+    {title: 'Sobre mim'}
+  )
+  const [contact, setContact] = useState(
+    {title: 'Vamos negociar'}
+  )
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+
+      <Container className="p-0 " fluid={true}>
+        
+        <Navbar className="border-bottom" bg="transparent" expand="md">
+
+          <Navbar.Brand>Davi Freire</Navbar.Brand>
+
+          <Navbar.Toggle className="border-0" aria-aria-controls="navbar-toggle"/>
+
+          <Navbar.Collapse id="navbar-toggle">
+
+          <Nav className="ml-auto">
+            {HeaderLinks.map((link)=>(
+              <Link className="nav-link" to={link.path}>{link.title}</Link>
+            ))}
+          </Nav>
+
+          </Navbar.Collapse>
+
+        </Navbar>
+
+        <Route 
+          path="/" 
+          exact 
+          render={()=> <HomePage 
+                        title={home.title} 
+                        subTitle={home.subTitle} 
+                        text={home.text}/>} 
+                        />
+        
+        <Footer/>
+
+      </Container>
+      
+    </Router>
   );
 }
 
