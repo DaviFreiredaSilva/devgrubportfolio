@@ -1,7 +1,8 @@
 import React from 'react';
+import Hero from '../components/Hero';
 
 export default function HomePage({title, subTitle, text}) {
   return (
-    <p>HomePage component</p>
+    <Hero title={title} subtitle={subTitle} text={text}/>
   )
 }

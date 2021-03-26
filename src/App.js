@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
 
 function App() {
 
@@ -17,7 +19,7 @@ function App() {
   ])
   const [home, setHome] = useState(
     {
-      title: 'Seja persistente',
+      title: 'Seja implacável',
       subTitle: 'Projetos que fazem a diferença',
       text: 'Veja meus projetos abaixo'
     }
@@ -60,7 +62,8 @@ function App() {
                         subTitle={home.subTitle} 
                         text={home.text}/>} 
                         />
-        
+        <Route path="/about" render={()=><AboutPage title={about.title}/>}/>
+        <Route path="/contact" render={()=><ContactPage title={contact.title}/>}/>
         <Footer/>
 
       </Container>
