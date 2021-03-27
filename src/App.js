@@ -19,7 +19,7 @@ function App() {
   ])
   const [home, setHome] = useState(
     {
-      title: 'Seja implacável',
+      title: 'Desenvolvimento inteligente',
       subTitle: 'Projetos que fazem a diferença',
       text: 'Veja meus projetos abaixo'
     }
